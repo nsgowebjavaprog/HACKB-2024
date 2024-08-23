@@ -1,0 +1,242 @@
+/*----------Action.html----------------*/
+
+body{
+    font-family:robot, lato !important;
+    font-size: large;
+}
+ul{
+    list-style: none;
+    margin :0;
+    padding:0
+}
+
+.logo{
+    height:50px;
+}
+.navbar-brand{
+    font-size: 27px;
+    padding-left: 5px;
+    font-family: 'Laot';
+}
+.nav-item a{
+    color:gray !important;
+    font-size: 16px;
+    padding: 0 10px;
+    font-weight: 600;
+}
+.display-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+li.nav-item{
+    padding: 0 10;
+}
+.signin-image{
+    height: 390px;
+    border: 25px solid white;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px grey;
+}
+textarea:focus, input:focus{
+    outline: none !important;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+.jumbotron{
+    background-color: wheat;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body{
+    line-height: 1.5;
+    font-family: 'Poppins',sans-serif;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    max-width: 1200px;
+
+    margin:auto;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+ul{
+    list-style: none;
+}
+
+.footer{
+    background-color: #000000;
+    padding: 0px 0px;
+}
+.footer-col{
+    width: 25%;
+    padding: 10px 15px;
+}
+.footer-col h4{
+    font-size: 18px;
+    color: #ffffff;
+    text-transform: capitalize;
+    margin-bottom: 30px;
+    font-weight: 500;
+    position: relative;
+
+}
+.footer-col h4::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-color: #e9ce1e8f;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+}
+.footer-col ul li:not(:last-child){
+    margin-bottom: 10px;
+}
+.footer-col ul li a{
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 300;
+    color:#bbbbbb;
+    display: block;
+    transition: all 0.3s ease;
+}
+.footer-col ul li a:hover{
+    color: #ffffff;
+    padding-left: 8px;
+}
+
+/*
+.footer-col .social-links a{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255,255,255,0.2);
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #ffffff;
+    transition: all 0.5s ease;
+    /*text-decoration: none; /* Add this line to remove underline 
+}
+.footer-col .social-links a:hover{
+    color: #24262b;
+    background-color: #ffffff;
+    /*text-decoration: none;  Add this line to remove underline on hover 
+} */
+
+
+ .footer-col .social-links a{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(78, 20, 20, 0.89);
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #ffffff;
+    transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover{
+    color: #ffffff;
+    background-color: #ffffff;
+}
+
+/* in MOBILEEEE */
+@media(max-width:767px){
+    .footer-col{
+        width: 50%;
+        margin-bottom: 30px;
+    }
+}
+@media (max-width: 574px) {
+    .footer-col{
+        width: 100%;
+    }
+}
+
+/*--------------------**********--------Index -Page---------***********--------------------*/
+
+.home-wrap{
+    background-color: rgb(31,30,30);
+}
+.g-top{
+    height: 90vh;
+    position: relative;
+}
+.video-wrap{
+    height: 600px;
+}
+.video-wrap{
+    flex: 1 1 250px;
+    border: 1px solid white;
+}
+.g-top-left{
+    position: absolute;
+    right: 0;
+    height: 8vh;
+    top: 0;
+    border-bottom-left-radius: 10px;
+}
+.top-left-participant-wrap{
+    position:relative;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+    padding: 5px;
+}
+.cursor-pointer:hover{
+    cursor: pointer;
+    padding: 5px;
+    background-color: rgb(226,225,225);
+    border-radius: 5px;
+}
+.top-left-participant-count{
+    position:absolute;
+    top: -2px;
+    right: -3px;
+    font-size: 15px;
+}
+.g-bottom{
+    /* margin: 0 -10px !important; */
+    padding: 0 20px;
+    box-shadow: 0 0 5px black;
+    z-index: 2;
+}
+.bottom-left{
+    position: relative;
+    padding: 5px;
+}
+
+/* Icon Background */
+
+.action-icon-style{
+    font-size: 8px !important;
+    height: 40px;
+    width: 40;
+    border: 1px solid rgb(154, 214, 231);
+    border-radius: 50%;
+}
+.end-call-wrap{
+  -ms-transform: rotate(100deg);
+    transform: rotate(0deg);
+}
+video{
+    border: 1px solid gray;
+    width: 300px;
+}
