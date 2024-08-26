@@ -181,28 +181,11 @@
             window.location.replace(meetingUrl);
         })
 
-        // $(document).on("click", ".new-meeting", function(){
-        //     var meetingID = Math.floor(Math.random() * 1000000000);
-        //     var meetingUrl = window.location.protocol + '//' + window.location.host + '?meetingID=' + meetingID;
-        //     window.location.replace(meetingUrl);
-        // })
-
         $(document).on("click", ".new-meeting", function(){
-    var meetingID = String.floor(String.random() * 1000000000).toString().padStart(9, '0');
-    meetingID = [
-        meetingID.substring(0, 3),
-        meetingID.substring(3, 6),
-        meetingID.substring(6, 9)
-    ].join('-');
-    var meetingUrl = window.location.protocol + '//' + window.location.host + '?meetingID=' + meetingID;
-    window.location.replace(meetingUrl);
-});
-
-
-
-
-
-
+            var meetingID = Math.floor(Math.random() * 100000000);
+            var meetingUrl = window.location.protocol + '//' + window.location.host + '?meetingID=' + meetingID;
+            window.location.replace(meetingUrl);
+        })
     })
 </script>
 

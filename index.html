@@ -41,7 +41,6 @@
             $("#meetingContainer").show();  // Assuming you have an HTML element with id "meetingContainer"
     
             MyApp._init(user_id, meeting_id);
-            alert('Successfully Join Meetingroom');
     
         })
     </script>
@@ -51,7 +50,7 @@
     <main class="d-flex flex-column home-wrap">
         <div class="g-top text-light">
             <div class="top-remote-video-show-wrap d-flex">
-                <div id="meetingContainer" class="w-75" style="display:none;">
+                <div id="meetingContainer" style="display:none; flex-basis: 75%;">
                 <div class="call-wrap" style="background-color: black;">
                     <div class="video-wrap" id="divUsers"
                     style="display:flex; flex-wrap:wrap">
@@ -74,6 +73,88 @@
        </div>
     </div>
 
+    <!-- Start Chating Room -->
+
+<div class="g-right-details-wrap bg-light text-secondary h-100"
+     style="flex-basis: 25%;  z-index: 1;">
+     <div class="meeting-heading-wrap d-flex 
+     justify-content-between align-items-center pr-3 pl-3"
+      style="height: 10vh;">
+        <div class="meeting-heading font-weight-bold">
+            Meeting Details
+        </div>
+        <div class="meeting-heading-cross display-center cursor-pointer">
+            <span classs="material-icons">clear</span>
+        </div>
+    </div>
+    <div class="people-chat-wrap d-flex 
+    justify-content-between align-items-center ml-3 mr-3 pr-3 pl-3"
+     style="height: 10vh; font-size:14px;">
+     
+       <div class="people-heading display-center cursor-pointer">
+           <div class="people-headin-icon display-center mr-1">
+               <span class="material-icon">people</span>
+           </div>
+
+           <div class="people-headin-icon display-center mr-1">
+               Participant (<span
+               class="participant-count">1</span>)
+             </div>
+       </div>
+       <div class="chat-heading d-flex just-content-round align-items-center cursor-pointer">
+           <div class="chat-heading-icon display-center mr-1">
+               <span class="material-icons">
+                   message
+               </span>
+           </div>
+           <div class="chat-heading-text">
+               Chat
+           </div>
+       </div> -
+   </div>    
+   <!-- 2nd -->
+     <div class="in-call-chat-wrap mr-3 ml-3 pl-3 pr-3"
+        style="font-size: 14px; height: 69vh; overflow-y:scroll;">
+          <div class="in-call-wrap-up"style="display:none !important;"></div>
+
+          <div class="chat-show-wrap text-secondary d-flex
+          flex-column justify-content-between h-100"
+          style="font-size:14px;">
+          <div class="chat-message-show" id="messages"></div>
+          <div class="chat-message-send d-flex 
+           justify-content-between align-items-center"
+           style="margin-bottom:35px">
+
+
+          <div class="chat-message-sent-input"
+         style="width: 85%;">
+
+         <input type="text" name=""
+         class="chat-message-sent-input-field w-100"
+         id="msgbox" placeholder="Send a message to everyone" style="border-bottom: 1px solid
+          teal;border: none;">
+
+      </div>
+        <div class="chat-message-sent-action 
+       display-center" id="btnsend" style="color:teal;
+        cursor: pointer;">
+        <span class="material-icons">send</span>
+       
+    </div>
+    </div>
+
+    </div>
+   </div>
+
+ </div>
+ -->
+
+
+
+
+
+
+    <!-- End Chating Room -->
 
         </div>
             <div class="g-top-left bg-light text-secondary w-25  d-flex
