@@ -31,7 +31,11 @@
         $(function(){
             const urlParams = new URLSearchParams(window.location.search);
             var meeting_id = urlParams.get('meetingID');
-            var user_id = prompt('Enter the userid');
+            var user_id = prompt('Enter The Userid');
+
+            console.log(user_id)
+            
+            alert('Successfully Create a Meeting RooM');
     
             if(!user_id || !meeting_id){
                 alert('User id or meeting id missing');
@@ -74,9 +78,8 @@
     </div>
 
     <!-- Start Chating Room -->
-
-<div class="g-right-details-wrap bg-light text-secondary h-100"
-     style="flex-basis: 25%;  z-index: 1;">
+    <div class="g-right-details-wrap bg-light text-secondary h-100"
+     style="flex-basis: 25%;  z-index: 1; display: none;">
      <div class="meeting-heading-wrap d-flex 
      justify-content-between align-items-center pr-3 pl-3"
       style="height: 10vh;">
@@ -115,11 +118,46 @@
    <!-- 2nd -->
      <div class="in-call-chat-wrap mr-3 ml-3 pl-3 pr-3"
         style="font-size: 14px; height: 69vh; overflow-y:scroll;">
-          <div class="in-call-wrap-up"style="display:none !important;"></div>
+          <div class="in-call-wrap-up"style="display:none !important;">
+ <!-- //pericipant details-Start   -->
 
-          <div class="chat-show-wrap text-secondary d-flex
+            <div class="in-call-wrap d-flex
+            justify-content-between align-items-center mb-3">
+        <div class="participant-img-name-wrap
+        display-center cursor-pointer">
+            <div class="participant-img">
+                <img src="public/Assets/images/other.jpg" alt="" 
+                class="border border-secondary" style="height: 40px;
+                width: 40px;border-radius:50%;">
+            </div>
+            <div class="participant-name ml-2">
+                You
+            </div>
+        </div>
+
+        <div class="participant-img-action-wrap
+        display-center">
+
+        <div class="participant-action-dot display-center mr-2 cursor-pointer">
+            <span class="material-icons">
+                more_vert
+            </span>
+        </div>
+        <div class="participant-action-pin display-center mr-2 cursor-pointer">
+            <span class="material-icons">
+                push_pin
+            </span>
+        </div>
+    </div>
+</div>
+
+
+ <!-- //pericipant details-End -->
+        </div>
+
+          <div class="chat-show-wrap text-secondary
           flex-column justify-content-between h-100"
-          style="font-size:14px;">
+          style="font-size:14px; display: flex;">
           <div class="chat-message-show" id="messages"></div>
           <div class="chat-message-send d-flex 
            justify-content-between align-items-center"
@@ -147,11 +185,6 @@
    </div>
 
  </div>
- -->
-
-
-
-
 
 
     <!-- End Chating Room -->
@@ -163,7 +196,7 @@
             <div class="top-left-participant-icon">
                 <span class="material-icons">people</span>
             </div>
-            <div class="top-left-participant-count"></div>
+            <div class="top-left-participant-count participant-count">1</div>
         </div>
         <div class="top-left-chat-wrap pt-2 cursor-pointer">
             <span class="material-icons">message</span>
@@ -171,9 +204,74 @@
         <div class="top-left-time-wrap"></div>
         </div>
     </div>
-        <div class="g-bottom bg-light m-0 d-flex justify-content-between
-        align-items-center">
+            <!-- Meeting Details-Start -->
+<div class="g-bottom bg-light m-0 d-flex justify-content-between
+    align-items-center">
     <div class="bottom-left d-flex" style="height: 10vh">
+        <div class="g-details border border-success mb-2" style="display: none;
+        min-height: 19.5vh;">
+            
+            <div class="g-details-heading d-flex
+            justify-content-between align-items-center
+            border-bottom pd-1">
+                <div class="g-details-heading-detail
+                d-flex align-items-center cursor-pointer ">
+                    <span class="material-icons">error</span
+                    style="margin-top:-5px">Details<span></span>
+                </div>
+
+                <div class="g-details-heading-attachment
+                    d-flex align-items-center cursor-pointer ">
+                    <span class="material-icons">attachment</span
+                    style="margin-top:-5px">Attachment<span></span>
+                </div>
+        </div>
+        <div class="g-details-heading-show-wrap">
+            <div class="g-details-heading-show">
+                <div style="font-weight: 600;
+                color: gray;">Joining Info</div>
+                <div style="cursor: pointer;">
+                    <span class="material-icons"
+                    style="font-size: 14px;">content_copy</span>
+                    <span class="copy_info font-weight-bold">Copy Joining btn-info
+                        <span style="display: none;
+                        background-color: aquamarine;
+                        border-radius: 5px;"
+                        class="link-conf
+                        font-weight-bold p-1">Link Copied</span>
+                    </span>
+                </div>
+            </div>
+
+<!-- File Sharing-Start -->
+
+        <div class="g-details-heading-show-attachment"
+           style="display: none;position: relative;">
+           <div class="show-attach-file"></div>
+           <div class="upload-attach-file">
+             <form enctype="multipart/form-data" ref="uploadForm"
+              class="display-center pt-1" id="uploadForm"
+                style="justify-content: space-between;">
+                   <div class="custom-file" style="flex-basis: 79%;">
+                      <input type="file" class="custom-file-input"
+                      id="customFile" name="imagefile">
+                      <label for="customFile"
+                      class="custom-file-label">Choose File</label>
+                </div>
+                <div class="share-button-wrap">
+                    <button class="btn btn-primary btn-sm
+                    share-attach" style="flex-basis:19%; padding: 6px 20px;">
+                Share</button>
+                </div>
+            </form>
+           </div>
+
+           <!-- File Sharing-End -->
+
+            </div>
+        </div>
+        </div>
+   <!-- Meeting Details-End -->
         <div class="display-center cursor-pointer meeting-details-button">
             Meeting Details<span class="material-icons">keyboard_arrow_down</span>
         </div>
@@ -201,15 +299,41 @@
 <div class="present-now-wrap d-flex just-content-center flex-column
 align-items-center mr-5 cursor-pointer" id="ScreenShareOnOf">
 <span class="material-icons">present_to_all</span>
-<div>Present Now</div>
+<div>Share Now</div>
 </div>
 
       <div class="option-wrap cursor-pointer display-center" style="height: 10vh;
         position: relative;">
+
+<!-- Recording-Start -->
+
+        <div class="recording-show">
+            <button class="btn btn-dark text-danger start-record">Start Recording</button>
+        </div>
+
+
+<!-- Recording-End -->
+
       <div class="option-icon">
         <span class="material-icons">more_vert</span>
       </div>
    </div>
+
+<div class="top-box-show" style="display: none;">
+     <div class="top-box align-vertical-middle
+        profile-dialogue-show">
+        <h1 class="mt-2">Leave Meeting</h1><hr>
+        <div class="call-leave-cancel-action d-flex
+        just-content-center align-items-center w-100">
+        <a href="/action.html"><button
+        class="call-leave-action btn btn-danger mr-5">
+        Leave</button></a>
+          <button class="call-cancel-action btn
+        btn-secondary">Cancel</button>
+      </div>
+    </div>
+</div>
+    
  </main>
 </body>
 </html>

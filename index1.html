@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h1>Create an Account</h1>
+            <form id="signup-form">
+                <label for="fullname">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" /><br /><br />
+                <label for="signup-email">Email:</label>
+                <input type="email" id="signup-email" name="email" /><br /><br />
+                <label for="signup-password">Password:</label>
+                <input type="password" id="signup-password" name="password" /><br /><br />
+                <div class="additional-fields">
+                    <div>
+                        <label for="mobile">Mobile:</label>
+                        <input type="text" id="mobile" name="mobile" />
+                    </div>
+                    <div>
+                        <label for="gender">Gender:</label>
+                        <select id="gender" name="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="country">Country:</label>
+                        <input type="text" id="country" name="country" />
+                    </div>
+                </div>
+                <br /><br />
+                <input type="submit" value="Sign Up" />
+            </form>
+
+            <h1>Sign In</h1>
+            <form id="signin-form">
+                <label for="signin-email">Email:</label>
+                <input type="email" id="signin-email" name="email" /><br /><br />
+                <label for="signin-password">Password:</label>
+                <input type="password" id="signin-password" name="password" /><br /><br />
+                <input type="submit" value="Sign In" />
+            </form>
+
+            <a href="#" id="forgot-password">Forgot Password?</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

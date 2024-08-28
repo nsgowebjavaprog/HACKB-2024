@@ -1,0 +1,137 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    width: 90%;
+    max-width: 450px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid #76d6e8;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(221, 136, 225, 0.825);
+    background: #ffffff;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="email"], input[type="password"], select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #bfeeee;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+input[type="submit"] {
+    background-color: #edaa10;
+    color: #ffffff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #d99c08;
+}
+
+#forgot-password {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #337ab7;
+    font-weight: bold;
+}
+
+#forgot-password:hover {
+    color: #23527c;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(142, 228, 241, 0.8), rgba(125, 97, 3, 0.6)), url(zm-vc-tb-1.webp);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.form-box {
+    width: 100%;
+    max-width: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    padding: 40px 15px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.form-box h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #42da10;
+    position: relative;
+}
+
+.form-box h1::after {
+    content: '';
+    width: 100px;
+    height: 3px;
+    border-radius: 10px;
+    background: #e2d41b;
+    position: absolute;
+    bottom: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.additional-fields {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.additional-fields div {
+    flex: 1;
+}
+
+.additional-fields input[type="text"], .additional-fields select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 0;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
+
+.password-container {
+    position: relative;
+}
+
+.password-container input[type="password"] {
+    width: calc(100% - 30px);
+    padding-right: 30px;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}

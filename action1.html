@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Action Page</title>
+</head>
+<body>
+    <h1>Create a Schedule For Google Meeting</h1>
+    <button onclick="sendEmails()">Send Emails</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.min.js"></script>
+    <script>
+        function sendEmails() {
+            // Load the Excel file
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.xlsx, .xls';
+            input.onchange = function() {
+                const file = input.files;
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const data = e.target.result;
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const sheetName = workbook.SheetNames;
+                    const sheet = workbook.Sheets[sheetName];
+                    const emails = XLSX.utils.sheet_to_json(sheet);
+
+                    // Extract email addresses
+                    const emailAddresses = emails.map(email => email.Email);
+
+                    // Send emails
+                    sendEmailsToAddresses(emailAddresses);
+                };
+                reader.readAsArrayBuffer(file);
+            };
+            input.click();
+        }
+
+        function sendEmailsToAddresses(emailAddresses) {
+            // Email content
+            const subject = "Google Meeting Reminder";
+            const body = "Hello everyone, The meeting will start within 5 minutes.";
+
+            // Send emails
+            emailAddresses.forEach(email => {
+                const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
+                window.open(mailtoLink);
+            });
+        }
+    </script>
+</body>
+</html>

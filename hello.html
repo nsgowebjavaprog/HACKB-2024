@@ -1,0 +1,227 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        h1 {
+            margin: 0 0 1em;
+            font-size: 24px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 1em;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: .5em;
+            font-weight: bold;
+            color: #333;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: .75em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group input:focus, .form-group select:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(38, 143, 255, 0.25);
+        }
+        .error {
+            color: #d9534f;
+            font-size: 0.875em;
+            margin-top: .25em;
+        }
+        .button-group {
+            margin-top: 1em;
+            text-align: center;
+        }
+        .button-group button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: .75em 1.5em;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .button-group button:hover {
+            background-color: #0056b3;
+        }
+        .button-group button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registration Form</h1>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+                <div id="fullNameError" class="error"></div>
+            </div>
+            <div class="form-group">
+                <label for="registerNumber">Register Number/USN:</label>
+                <input type="text" id="registerNumber" name="registerNumber" required>
+                <div id="registerNumberError" class="error"></div>
+            </div>
+            <div class="form-group">
+                <label for="department">Department:</label>
+                <input type="text" id="department" name="department" required>
+                <div id="departmentError" class="error"></div>
+            </div>
+            <div class="form-group">
+                <label for="semester">Semester:</label>
+                <select id="semester" name="semester" required>
+                    <option value="" disabled selected>Select Semester</option>
+                    <option value="1">1st</option>
+                    <option value="2">2nd</option>
+                    <option value="3">3rd</option>
+                    <option value="4">4th</option>
+                    <option value="5">5th</option>
+                    <option value="6">6th</option>
+                    <option value="7">7th</option>
+                    <option value="8">8th</option>
+                </select>
+                <div id="semesterError" class="error"></div>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number (+91):</label>
+                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="+91" required>
+                <div id="phoneNumberError" class="error"></div>
+            </div>
+            <div class="button-group">
+                <button type="submit" id="submitButton" disabled>Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+    <script>
+        function validateRegistrationForm() {
+            const fullName = document.getElementById('fullName').value;
+            const registerNumber = document.getElementById('registerNumber').value;
+            const department = document.getElementById('department').value;
+            const semester = document.getElementById('semester').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+
+            let isValid = true;
+
+            // Full Name Validation
+            if (fullName.length < 2) {
+                document.getElementById('fullNameError').textContent = 'Full name must be at least 2 characters.';
+                isValid = false;
+            } else {
+                document.getElementById('fullNameError').textContent = '';
+            }
+
+            // Register Number Validation
+            if (registerNumber.length < 8 || registerNumber.length > 15) {
+                document.getElementById('registerNumberError').textContent = 'Register Number must be between 8 and 15 characters.';
+                isValid = false;
+            } else {
+                document.getElementById('registerNumberError').textContent = '';
+            }
+
+            // Department Validation
+            if (department.trim() === '') {
+                document.getElementById('departmentError').textContent = 'Department is required.';
+                isValid = false;
+            } else {
+                document.getElementById('departmentError').textContent = '';
+            }
+
+            // Semester Validation
+            if (!semester) {
+                document.getElementById('semesterError').textContent = 'Semester is required.';
+                isValid = false;
+            } else {
+                document.getElementById('semesterError').textContent = '';
+            }
+
+            // Phone Number Validation (Indian format with +91)
+            const phonePattern = /^\+91\d{10}$/;
+            if (!phonePattern.test(phoneNumber)) {
+                document.getElementById('phoneNumberError').textContent = 'Invalid phone number. It should be in the format +91 followed by 10 digits.';
+                isValid = false;
+            } else {
+                document.getElementById('phoneNumberError').textContent = '';
+            }
+
+            // Enable/Disable submit button based on validity
+            document.getElementById('submitButton').disabled = !isValid;
+        }
+
+        document.getElementById('registrationForm').addEventListener('input', validateRegistrationForm);
+
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            if (document.getElementById('submitButton').disabled) {
+                event.preventDefault(); // Prevent form submission if not valid
+            } else {
+                // Prevent default form submission
+                event.preventDefault();
+
+                // Add Registration Data
+                const fullName = document.getElementById('fullName').value;
+                const registerNumber = document.getElementById('registerNumber').value;
+                const department = document.getElementById('department').value;
+                const semester = document.getElementById('semester').value;
+                const phoneNumber = document.getElementById('phoneNumber').value;
+
+                const registrationData = {
+                    fullName,
+                    registerNumber,
+                    department,
+                    semester,
+                    phoneNumber
+                };
+
+                // Save Registration Data to Local Storage
+                let userData = JSON.parse(localStorage.getItem('userData')) || [];
+                userData.push(registrationData);
+                userData = removeDuplicates(userData);
+                localStorage.setItem('userData', JSON.stringify(userData));
+                saveDataToCSV(userData);
+
+                alert('Registration successful!');
+                document.getElementById('registrationForm').reset();
+                window.location.href = 'index1.html'; // Redirect to index.html page
+            }
+        });
+
+        // Initial validation to ensure button state on page load
+        validateRegistrationForm();
+    </script>
+</body>
+</html> -->
