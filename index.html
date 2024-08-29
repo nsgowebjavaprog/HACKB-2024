@@ -31,11 +31,7 @@
         $(function(){
             const urlParams = new URLSearchParams(window.location.search);
             var meeting_id = urlParams.get('meetingID');
-            var user_id = prompt('Enter The Userid');
-
-            console.log(user_id)
-            
-            alert('Successfully Create a Meeting RooM');
+            var user_id = prompt('Enter the userid');
     
             if(!user_id || !meeting_id){
                 alert('User id or meeting id missing');
@@ -96,7 +92,7 @@
      
        <div class="people-heading display-center cursor-pointer">
            <div class="people-headin-icon display-center mr-1">
-               <span class="material-icon">people</span>
+               <span class="material-icon">People</span>
            </div>
 
            <div class="people-headin-icon display-center mr-1">
@@ -143,11 +139,20 @@
                 more_vert
             </span>
         </div>
+
+
+
+
+        <!-- // Pin-Start -->
         <div class="participant-action-pin display-center mr-2 cursor-pointer">
             <span class="material-icons">
                 push_pin
             </span>
         </div>
+        <!-- // Pin-End -->
+
+
+
     </div>
 </div>
 
@@ -299,7 +304,7 @@
 <div class="present-now-wrap d-flex just-content-center flex-column
 align-items-center mr-5 cursor-pointer" id="ScreenShareOnOf">
 <span class="material-icons">present_to_all</span>
-<div>Share Now</div>
+<div>Present Now</div>
 </div>
 
       <div class="option-wrap cursor-pointer display-center" style="height: 10vh;
