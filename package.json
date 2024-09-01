@@ -10,9 +10,13 @@
   "author": "nsloni",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.2",
+    "exceljs": "^4.4.0",
     "express": "^4.19.2",
     "express-fileupload": "^1.5.1",
-    "socket.io": "^4.7.5"
+    "socket.io": "^4.7.5",
+    "webrtc": "^1.14.1",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "nodemon": "^3.1.4"
