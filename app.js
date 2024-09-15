@@ -29,13 +29,12 @@ var AppProcess = (function () {
 
     // Mice functions 
     function eventProcess() {
-        // Click event for the mute/unmute button
         $("#miceMuteUnmute").on("click", async function () {
             if (!audio) {
                 await loadAudio();
             }
             if (!audio) {
-                alert("Audio permission has not been granted");
+                alert("Audio permission on has not granted");
                 return;
             }
             if (isAudioMute) {
@@ -49,101 +48,15 @@ var AppProcess = (function () {
             }
             isAudioMute = !isAudioMute;
         });
-    
-        // Keyboard shortcut event listener
-        $(document).on("keydown", function(event) {
-            // Check if CTRL + ALT + M is pressed
-            if (event.ctrlKey && event.altKey && event.key === 'm') {
-                event.preventDefault(); // Prevent the default action
-                // Handle the mute/unmute logic
-                if (!audio) {
-                    loadAudio();
-                }
-                if (audio) {
-                    if (isAudioMute) {
-                        audio.enabled = true;
-                        $("#miceMuteUnmute").html("<span class='material-icons' style='width:100%;'>mic</span>");
-                        updateMediaSenders(audio, rtp_aud_sender);
-                    } else {
-                        audio.enabled = false;
-                        $("#miceMuteUnmute").html("<span class='material-icons' style='width:100%;'>mic_off</span>");
-                        removeMediaSenders(rtp_aud_sender);
-                    }
-                    isAudioMute = !isAudioMute;
-                } else {
-                    alert("Audio permission has not been granted");
-                }
-            }
-    
-            // Check if the space bar is pressed
-            if (event.key === ' ') {
-                if (audio && isAudioMute) {
-                    // Temporarily unmute if audio is currently muted
-                    audio.enabled = true;
-                    $("#miceMuteUnmute").html("<span class='material-icons' style='width:100%;'>mic</span>");
-                    updateMediaSenders(audio, rtp_aud_sender);
-                    event.preventDefault(); // Prevent default action of space bar if needed
-                }
-            }
-        });
-    
-        // Event listener to handle when the space bar is released
-        $(document).on("keyup", function(event) {
-            if (event.key === ' ') {
-                if (audio && !isAudioMute) {
-                    // Mute the audio again if it was temporarily unmuted
-                    audio.enabled = false;
-                    $("#miceMuteUnmute").html("<span class='material-icons' style='width:100%;'>mic_off</span>");
-                    removeMediaSenders(rtp_aud_sender);
-                    isAudioMute = true; // Restore the mute state
-                }
-            }
-        });
-    
-
-    
-    
-
 
         //Video Func's
-        // $("#videoCamOnOff").on("click", async function () {
-        //     if (video_st == video_states.Camara) {
-        //         await videoProcess(video_states.None)
-        //     } else {
-        //         await videoProcess(video_states.Camara)
-        //     }
-        // })
-// Add the click event listener for the button
-$("#videoCamOnOff").on("click", async function () {
-    if (video_st == video_states.Camara) {
-        await videoProcess(video_states.None);
-    } else {
-        await videoProcess(video_states.Camara);
-    }
-});
-
-// Function to toggle video state
-async function toggleVideoState() {
-    if (video_st == video_states.Camara) {
-        await videoProcess(video_states.None);
-    } else {
-        await videoProcess(video_states.Camara);
-    }
-}
-
-// Add keyboard shortcut event listener
-$(document).on("keydown", function(event) {
-    // Check if the CTRL, ALT, and C keys are pressed
-    if (event.ctrlKey && event.altKey && event.key === 'c') {
-        event.preventDefault(); // Prevent the default action
-        toggleVideoState(); // Toggle the video state
-    }
-});
-
-
-
-
-
+        $("#videoCamOnOff").on("click", async function () {
+            if (video_st == video_states.Camara) {
+                await videoProcess(video_states.None)
+            } else {
+                await videoProcess(video_states.Camara)
+            }
+        })
         //  ScreenShareOnOf
         $("#ScreenShareOnOf").on("click", async function () {
             if (video_st == video_states.ScreenShare) {
@@ -710,94 +623,48 @@ $(document).on("click",".call-cancel-action", function(){
 // Meeting-Details-End
 
 //File Sharing-Start
-// var base_url = window.location.origin;
-
-//     $(document).on("change", ".custom-file-input", function(){
-//         var fileName = $(this).val().split("\\").pop();
-//         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-//     });
-
-//         $(document).on("click", ".share-attach", function(e){    
-//         e.preventDefault();
-//         var att_img = $("#customFile").prop("files")[0];
-//         var formData = new FormData();
-//         formData.append("zipfile", att_img);
-//         formData.append("meeting_id", meeting_id);
-//         formData.append("username", user_id);
-//         console.log(formData);
-//         $.ajax({
-//             url:base_url+"/attachimg",
-//             type:"POST",
-//             data:formData,
-//             contentType:false,
-//             processData:false,
-//             success:function(response){
-//                 console.log(response)
-//             },
-//             error:function(){
-//                 console.log('error');
-//             },
-//         });
-
-//         var attachFileArea = document.querySelector(".show-attach-file");
-//         var attachFileName = $("#customFile").val().split("\\").pop();
-//         var attachFilePath = "public/attachment/"+meeting_id+"/"+attachFileName;
-//         attachFileArea.innerHTML += "<div class='left-align' style='display:flex;align-items:center;'><img src='public/assets/images/other.jpg' style='height:40px;width:40px;' class='caller-image circle'><div style='font-weight:600; margin:0 5px;'>" +user_id+"</div>:<div><a style='color:#007bff;' href='"+attachFilePath+"' download>"+attachFileName+"</a></div></div><br/>";
-//         $("label.custom-file-label").text("");
-//         socket.emit("fileTransferToOther", {
-//             username:user_id,
-//             meetingid: meeting_id,
-//             filePath:attachFilePath,
-//             fileName:attachFileName
-//         });
-
-//     });
-
 var base_url = window.location.origin;
 
-$(document).on("change", ".custom-file-input", function(){
-    var fileName = $(this).val().split("\\").pop();
-    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-});
-
-$(document).on("click", ".share-attach", function(e){
-    e.preventDefault();
-    var att_img = $("#customFile").prop("files");
-    if (att_img.size > 5) {
-        alert("File size exceeds 5MB. Please choose a smaller file.");
-        return;
-    }
-    var formData = new FormData();
-    formData.append("zipfile", att_img);
-    formData.append("meeting_id", meeting_id);
-    formData.append("username", user_id);
-    console.log(formData);
-    $.ajax({
-        url: base_url + "/attachimg",
-        type: "POST",
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function(response) {
-            console.log(response);
-        },
-        error: function() {
-            console.log('error');
-        }
+    $(document).on("change", ".custom-file-input", function(){
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
 
-    var attachFileArea = document.querySelector(".show-attach-file");
-    var attachFileName = $("#customFile").val().split("\\").pop();
-    var attachFilePath = "public/attachment/" + meeting_id + "/" + attachFileName;
-    attachFileArea.innerHTML += "<div class='left-align' style='display:flex;align-items:center;'><img src='public/assets/images/other.jpg' style='height:40px;width:40px;' class='caller-image circle'><div style='font-weight:600; margin:0 5px;'>" + user_id + "</div>:<div><a style='color:#007bff;' href='" + attachFilePath + "' download>" + attachFileName + "</a></div></div><br/>";
-    $("label.custom-file-label").text("");
-    socket.emit("fileTransferToOther", {
-        username: user_id,
-        meetingid: meeting_id,
-        filePath: attachFilePath,
-        fileName: attachFileName
+        $(document).on("click", ".share-attach", function(e){    
+        e.preventDefault();
+        var att_img = $("#customFile").prop("files")[0];
+        var formData = new FormData();
+        formData.append("zipfile", att_img);
+        formData.append("meeting_id", meeting_id);
+        formData.append("username", user_id);
+        console.log(formData);
+        $.ajax({
+            url:base_url+"/attachimg",
+            type:"POST",
+            data:formData,
+            contentType:false,
+            processData:false,
+            success:function(response){
+                console.log(response)
+            },
+            error:function(){
+                console.log('error');
+            },
+        });
+
+        var attachFileArea = document.querySelector(".show-attach-file");
+        var attachFileName = $("#customFile").val().split("\\").pop();
+        var attachFilePath = "public/attachment/"+meeting_id+"/"+attachFileName;
+        attachFileArea.innerHTML += "<div class='left-align' style='display:flex;align-items:center;'><img src='public/assets/images/other.jpg' style='height:40px;width:40px;' class='caller-image circle'><div style='font-weight:600; margin:0 5px;'>" +user_id+"</div>:<div><a style='color:#007bff;' href='"+attachFilePath+"' download>"+attachFileName+"</a></div></div><br/>";
+        $("label.custom-file-label").text("");
+        socket.emit("fileTransferToOther", {
+            username:user_id,
+            meetingid: meeting_id,
+            filePath:attachFilePath,
+            fileName:attachFileName
+        });
+
     });
-});
 
 // Recording-Start
 
@@ -867,6 +734,41 @@ $(document).on("click", ".share-attach", function(e){
 
 // Recording-End
 
+//microphone on and off for a specific participant 
+// //-----------------------------------------------------------------Start
+// app.js
+
+// Function to toggle microphone on/off
+function toggleMic() {
+    // Get the current microphone state
+    const isMicOn = document.querySelector('.participant-action-pin').classList.contains('mic-on');
+
+    // Toggle the microphone state
+    if (isMicOn) {
+        // Turn off the microphone
+        document.querySelector('.participant-action-pin').classList.remove('mic-on');
+        document.querySelector('.participant-action-pin').classList.add('mic-off');
+        // Call server to turn off microphone for this participant
+        fetch('/toggleMic', { method: 'POST', body: 'off' })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+    } else {
+        // Turn on the microphone
+        document.querySelector('.participant-action-pin').classList.remove('mic-off');
+        document.querySelector('.participant-action-pin').classList.add('mic-on');
+        // Call server to turn on microphone for this participant
+        fetch('/toggleMic', { method: 'POST', body: 'on' })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+    }
+}
+
+// Add event listener to the pin icon
+document.querySelector('.participant-action-pin').addEventListener('click', toggleMic);
+
+// //----------------------------------------------------------------------------End
 //File Sharing-End
     return {
         _init: function (uid, mid) {
