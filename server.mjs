@@ -13,6 +13,14 @@ const server = app.listen(3000, function(){
     console.log("Listening on port 3000")
 });
 
+// File-sharing-Start
+
+// const fs = require('fs');
+//const fileUpload = require("express-fileupload");
+
+// File-sharing-End
+
+
 const io = new Server(server,{
     allowEIO3:true,
 });
@@ -82,6 +90,35 @@ io.on("connection", (socket)=>{
     })
 
     //chat-End
+
+
+////////-------------file sharing Start
+socket.on("fileTransferToOther", (msg) =>{
+    console.log(msg);
+    var mUser = userConnections.find((p)=>p.connectionId == socket.id);
+    if(mUser){
+        var meetingid = mUser.meeting_id;
+        var from = mUser.user_id;
+        var list = userConnections.filter((p)=>p.meeting_id == meetingid);
+        list.forEach((v)=>{
+            socket.to(v.connectionId).emit("showFileMessage",{
+                username: msg.username,
+                meetingid: msg.meetingid,
+                filePath: msg.filePath,
+                fileName: msg.fileName,
+            });
+        });
+    }
+});
+
+socket.on("fileTransferToOther", function(msg){
+    console.log(msg);
+    var userO
+})
+
+////////-----------------file sharing End
+
+
 
     // Screen Sharing-start
 
