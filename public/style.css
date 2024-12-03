@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url('https://www.shutterstock.com/image-vector/internet-digital-syber-security-technology-260nw-1518108761.jpg');
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+
+h2{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-contsiner{
+   background-color: transparent;
+    width: 450px;
+    height: 550px;
+    margin: 0 auto;
+    padding: 12px;
+    border: 3px solid #b1e3eb;
+    border-radius: 5px;
+    box-shadow: 10px 10px 5px lightblue;
+    color: #fff;
+    font-size: 2rem;
+    background-image: url('https://images8.alphacoders.com/856/856891.png');
+    background-size: cover;
+}
+.form-group{
+    margin-bottom: 15px;
+}
+
+.form-group label{
+    display: block;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.form-group input{
+    width: 100%;
+    padding: 8px;
+    font-size: 15px;
+    border: 1px solid #75a8b6;
+    border-radius: 3px;
+}
+
+.submit-btn{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(238, 28, 28);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 40px;
+}
+
+.submit-btn:hover{
+    background-color: #7cf206be;
+}
+
+p{
+    margin-top: 45px;
+}
